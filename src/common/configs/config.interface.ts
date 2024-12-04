@@ -8,6 +8,7 @@ export interface Config {
 
 export interface NestConfig {
   port: number;
+  context_path: string;
 }
 
 export interface CorsConfig {

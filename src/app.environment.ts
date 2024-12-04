@@ -13,11 +13,16 @@ export const NODE_ENV: string = process.env.NODE_ENV || 'development';
 
 // Server config
 export const PORT: number = parseInt(process.env.PORT, 10) || 8080;
+export const CONTEXT_PATH: string = process.env.CONTEXT_PATH || '/api';
 
 // Swagger config
-export const WALLET_NONCE_TTL: number =
-  parseInt(process.env.WALLET_NONCE_TTL, 10) || 300000;
+export const SWAGGER_TITLE: string = process.env.SWAGGER_TITLE || 'Nestjs';
+export const SWAGGER_DESCRIPTION: string =
+  process.env.SWAGGER_DESCRIPTION || 'The nestjs API description';
+export const SWAGGER_VERSION: string = process.env.SWAGGER_VERSION || '1.5';
+export const SWAGGER_PATH: string = process.env.SWAGGER_PATH || 'docs';
 
+// Logging config
 export const LOGGING_CONSOLE_LEVEL =
   process.env.LOGGING_CONSOLE_LEVEL || 'debug';
 // Silent level mean no logging

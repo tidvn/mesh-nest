@@ -27,6 +27,12 @@ async function bootstrap() {
   const nestConfig = configService.get<NestConfig>('nest');
   const corsConfig = configService.get<CorsConfig>('cors');
   const swaggerConfig = configService.get<SwaggerConfig>('swagger');
+  // Cors
+  if (corsConfig.enabled) {
+    app.enableCors();
+  }
+
+  app.setGlobalPrefix(nestConfig.context_path);
 
   // Swagger Api
   if (swaggerConfig.enabled) {
@@ -36,15 +42,9 @@ async function bootstrap() {
       .setVersion(swaggerConfig.version || '1.0')
       .build();
     const document = SwaggerModule.createDocument(app, options);
-
-    SwaggerModule.setup(swaggerConfig.path || 'api', app, document);
+    SwaggerModule.setup(swaggerConfig.path, app, document);
   }
 
-  // Cors
-  if (corsConfig.enabled) {
-    app.enableCors();
-  }
-
-  await app.listen(process.env.PORT || nestConfig.port || 3000);
+  await app.listen(nestConfig.port);
 }
 bootstrap();

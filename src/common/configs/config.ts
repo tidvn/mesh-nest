@@ -1,21 +1,31 @@
+import {
+  CONTEXT_PATH,
+  NODE_ENV,
+  PORT,
+  SWAGGER_DESCRIPTION,
+  SWAGGER_PATH,
+  SWAGGER_TITLE,
+  SWAGGER_VERSION,
+} from '@/app.environment';
 import type { Config } from './config.interface';
 
 const config: Config = {
   nest: {
-    port: 3000,
+    port: PORT,
+    context_path: CONTEXT_PATH,
   },
   cors: {
     enabled: true,
   },
   swagger: {
-    enabled: true,
-    title: 'Nestjs FTW',
-    description: 'The nestjs API description',
-    version: '1.5',
-    path: 'api',
+    enabled: NODE_ENV !== 'production',
+    title: SWAGGER_TITLE,
+    description: SWAGGER_DESCRIPTION,
+    version: SWAGGER_VERSION,
+    path: SWAGGER_PATH,
   },
   graphql: {
-    playgroundEnabled: true,
+    playgroundEnabled: NODE_ENV !== 'production',
     debug: true,
     schemaDestination: './src/schema.graphql',
     sortSchema: true,

@@ -8,7 +8,7 @@ import {
   ResolveField,
 } from '@nestjs/graphql';
 import { UseGuards } from '@nestjs/common';
-import { UserEntity } from '../common/decorators/user.decorator';
+import { UserEntity } from '@/common/decorators/user.decorator';
 import { GqlAuthGuard } from '../auth/gql-auth.guard';
 import { UsersService } from './users.service';
 import { User } from './models/user.model';

@@ -11,16 +11,16 @@ import {
 import { findManyCursorConnection } from '@devoxa/prisma-relay-cursor-connection';
 import { PubSub } from 'graphql-subscriptions';
 import { UseGuards } from '@nestjs/common';
-import { PaginationArgs } from '../common/pagination/pagination.args';
-import { UserEntity } from '../common/decorators/user.decorator';
+import { PaginationArgs } from '@/common/pagination/pagination.args';
+import { UserEntity } from '@/common/decorators/user.decorator';
 import { User } from '../users/models/user.model';
 import { GqlAuthGuard } from '../auth/gql-auth.guard';
-import { PostIdArgs } from './args/post-id.args';
-import { UserIdArgs } from './args/user-id.args';
 import { Post } from './models/post.model';
+import { CreatePostInput } from './dto/createPost.input';
 import { PostConnection } from './models/post-connection.model';
 import { PostOrder } from './dto/post-order.input';
-import { CreatePostInput } from './dto/createPost.input';
+import { UserIdArgs } from './args/user-id.args';
+import { PostIdArgs } from './args/post-id.args';
 
 const pubSub = new PubSub();
 
